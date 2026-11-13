@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 10 Test Result - Maa Science Classes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: #f8fafc;
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* Box hata diya gaya hai, ab yeh full clean layout hai */
+        .main-wrapper {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        /* Top Navigation / Back Button */
+        .nav-bar {
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+        .btn-back:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Header Styling */
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .header h2 {
+            color: #0f172a;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .header p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Search Box Styling */
+        .search-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .search-box:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        /* Table Design */
+        .table-container {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 14px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        th {
+            background-color: #0f172a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+        
+        /* Action Button */
+        .btn-view {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s;
+        }
+        .btn-view:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            transform: translateY(-1px);
+        }
+        
+        /* Modern Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-content h3 {
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-size: 20px;
+        }
+        .modal-content p {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        /* Input group with Eye Icon */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .modal-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 4px;
+            outline: none;
+        }
+        .modal-input:focus {
+            border-color: #2563eb;
+        }
+        .eye-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #64748b;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        .modal-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .btn-submit {
+            background-color: #16a34a;
+            color: white;
+        }
+        .btn-submit:hover {
+            background-color: #15803d;
+        }
+        .btn-cancel {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+        .btn-cancel:hover {
+            background-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <!-- Back Button -->
+    <div class="nav-bar">
+        <a href="result.html" class="btn-back">← Back to Result</a>
+    </div>
+
+    <div class="header">
+        <h2>CLASS 10 TEST RESULT</h2>
+        <p>Apna Roll Number ya Naam search karein aur secure PIN dalkar test copy dekhein.</p>
+        <p style="color: #dc2626; font-weight: 600; margin-top: 5px;">⚠️ Yeh test copy sirf 1 hafte (1 week) ke liye available rahegi.</p>
+    </div>
+    
+    <!-- Search Bar -->
+    <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchBox" class="search-box" placeholder="Search by Roll No or Student Name..." onkeyup="searchStudent()">
+    </div>
+
+    <!-- Table Container (Box Hata Diya Gaya Hai) -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll No</th>
+                    <th>Student Name</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                <!-- JavaScript saare students yahan load karega -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Custom Verification Modal Popup -->
+<div id="verifyModal" class="modal">
+    <div class="modal-content">
+        <h3>Security Verification</h3>
+        <p id="modalStudentInfo">Apne Aadhaar ke last 4 digits enter karein:</p>
+        
+        <div class="input-group">
+            <input type="password" id="pinInput" class="modal-input" maxlength="4" placeholder="••••">
+            <span id="eyeBtn" class="eye-icon" onclick="togglePinVisibility()">👁️</span>
+        </div>
+
+        <div class="modal-buttons">
+            <button class="modal-btn btn-cancel" onclick="closeModal()">Cancel</button>
+            <button class="modal-btn btn-submit" onclick="validatePin()">Submit</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 70+ Students ka Data
+    const studentData = [
+        { roll: "101", name: "Rahul Kumar", securePin: "8797", pdfUrl: "https://drive.google.com/file/d/1zSDSJYBu1bemZv8YzC9aYd_Q2zsUk8Tp/view?usp=drivesdk" },
+        { roll: "102", name: "Pooja Kumari", securePin: "5678", pdfUrl: "" },
+        { roll: "103", name: "Amit Sharma", securePin: "9876", pdfUrl: "" },
+        // Baaki students yahan add karein...
+    ];
+
+    const tableBody = document.getElementById("studentTableBody");
+    const modal = document.getElementById("verifyModal");
+    const pinInput = document.getElementById("pinInput");
+    const modalInfo = document.getElementById("modalStudentInfo");
+    const eyeBtn = document.getElementById("eyeBtn");
+
+    let currentStudent = null;
+
+    // Table load karne ka function
+    function loadTable(data) {
+        tableBody.innerHTML = "";
+        if (data.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #888; padding: 20px;">Koi student nahi mila!</td></tr>`;
+            return;
+        }
+        data.forEach(student => {
+            tableBody.innerHTML += `
+                <tr>
+                    <td><strong>${student.roll}</strong></td>
+                    <td>${student.name}</td>
+                    <td style="text-align: center;">
+                        <button class="btn-view" onclick="openModal('${student.roll}', '${student.name}', '${student.securePin}', '${student.pdfUrl}')">View Copy</button>
+                    </td>
+                </tr>
+            `;
+        });
+    }
+
+    loadTable(studentData);
+
+    // Live Search Function
+    function searchStudent() {
+        let query = document.getElementById("searchBox").value.toLowerCase();
+        let filteredData = studentData.filter(student => 
+            student.roll.toLowerCase().includes(query) || student.name.toLowerCase().includes(query)
+        );
+        loadTable(filteredData);
+    }
+
+    // Modal Open Karne ka Function
+    let currentPin = ""; // Global variable banayein
+
+    function openModal(roll, name, pin, url) {
+        currentStudentUrl = url;
+        currentPin = pin; // PIN ko yahan save kar rahe hain
+        modalInfo.innerText = `Roll No: ${roll} (${name}) Aapna test copy dekhne ke liye aadhar card ke last 4-digit PIN dalein:`;
+        pinInput.value = "";
+        pinInput.type = "password";
+        eyeBtn.innerText = "👁️";
+        modal.style.display = "flex";
+        pinInput.focus();
+    }
+
+    // Modal Close Karne ka Function
+    function closeModal() {
+        modal.style.display = "none";
+        currentStudent = null;
+    }
+
+    // Pin Hide / Unhide (Toggle) Function
+    function togglePinVisibility() {
+        if (pinInput.type === "password") {
+            pinInput.type = "text";
+            eyeBtn.innerText = "🙈"; 
+        } else {
+            pinInput.type = "password";
+            eyeBtn.innerText = "👁️"; 
+        }
+    }
+
+    // PIN Validate Karne ka Function
+    function validatePin() {
+        let enteredPin = pinInput.value.trim();
+        
+        // Dono ko string me convert karke match kar rahe hain taaki error na aaye
+        if (enteredPin === String(currentPin)) {
+            closeModal();
+            window.open(currentStudentUrl, "_blank");
+        } else {
+            alert("Galat PIN! Kripya sahi 4 digits enter karein.");
+            pinInput.value = "";
+            pinInput.focus();
+        }
+    }
+
+    // Enter key press karne par submit ho jaye
+    pinInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            validatePin();
+        }
+    });
+</script>
+
+</body>
+</html>
