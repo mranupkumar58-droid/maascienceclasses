@@ -922,6 +922,57 @@ html, body {
         font-size: 11px;
     }
 }
+/* COURSES HERO ANIMATION */
+
+@keyframes heroFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Heading */
+.courses-hero h1 {
+    animation: heroFadeUp 0.9s ease both;
+}
+
+/* Hero Paragraph */
+.courses-hero p {
+    animation: heroFadeUp 1s ease 0.25s both;
+}
+
+/* Hero Divider */
+.courses-hero .hero-divider {
+    animation: dividerAnimation 1s ease 0.6s both;
+}
+
+@keyframes dividerAnimation {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+/* Mobile Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .courses-hero h1,
+    .courses-hero p,
+    .courses-hero .hero-divider {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
     </style>
 </head>
 <body>

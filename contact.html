@@ -622,7 +622,49 @@ html, body {
         font-size: 11px;
     }
 }
+/* CONTACT HERO ANIMATION */
 
+@keyframes contactHeroFade {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contactDivider {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+.contact-hero h1 {
+    animation: contactHeroFade 0.9s ease both;
+}
+
+.contact-hero p {
+    animation: contactHeroFade 1s ease 0.25s both;
+}
+
+.contact-hero .hero-divider {
+    animation: contactDivider 1s ease 0.6s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-hero h1,
+    .contact-hero p,
+    .contact-hero .hero-divider {
+        animation: none;
+    }
+}
     </style>
 </head>
 <body>

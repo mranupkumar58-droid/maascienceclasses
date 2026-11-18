@@ -803,6 +803,60 @@ footer {
         font-size: 11px;
     }
 }
+/* =================================
+   HERO SECTION ONLY ANIMATION
+================================= */
+
+@keyframes heroFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Heading */
+.about-hero h1 {
+    animation: heroFadeUp 0.9s ease both;
+}
+
+/* Hero Paragraph */
+.about-hero p {
+    animation: heroFadeUp 1s ease 0.25s both;
+}
+
+/* Hero Divider */
+@keyframes dividerAnimation {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 100px;
+        opacity: 1;
+    }
+}
+
+.about-hero .hero-divider {
+    animation: dividerAnimation 1s ease 0.6s both;
+}
+
+/* Only Hero Hover-free and Mobile Friendly */
+
+@media (prefers-reduced-motion: reduce) {
+    .about-hero h1,
+    .about-hero p,
+    .about-hero .hero-divider {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
     </style>
 </head>
 <body>
