@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Teachers | MAA SCIENCE CLASSES</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --muted-text: #64748b;
+            --badge-bg: #eff6ff;
+            --badge-text: #2563eb;
+            --badge-border: #dbeafe;
+            --exp-badge-bg: rgba(15, 23, 42, 0.85);
+            --exp-badge-text: #ffffff;
+            --topbar-bg: #ffffff;
+            --topbar-border: #e2e8f0;
+            --btn-bg: #f1f5f9;
+            --btn-text: #1e293b;
+            --btn-border: #cbd5e1;
+            --btn-hover-bg: #0f172a;
+            --btn-hover-text: #ffffff;
+            --footer-bg: #0f172a;
+            --footer-text: #94a3b8;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0b0f19;
+            --text-color: #f8fafc;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --muted-text: #94a3b8;
+            --badge-bg: #1e3a8a;
+            --badge-text: #93c5fd;
+            --badge-border: #3b82f6;
+            --exp-badge-bg: rgba(15, 23, 42, 0.9);
+            --exp-badge-text: #f8fafc;
+            --topbar-bg: #111827;
+            --topbar-border: #1f2937;
+            --btn-bg: #1f2937;
+            --btn-text: #f8fafc;
+            --btn-border: #374151;
+            --btn-hover-bg: #2563eb;
+            --btn-hover-text: #ffffff;
+            --footer-bg: #07090e;
+            --footer-text: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Professional Sticky Top Bar */
+        .top-navbar {
+            background-color: var(--topbar-bg);
+            border-bottom: 1px solid var(--topbar-border);
+            padding: 14px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            text-decoration: none;
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            border: 1px solid var(--btn-border);
+            transition: all 0.25s ease;
+        }
+
+        .back-btn:hover {
+            background-color: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+            border-color: var(--btn-hover-bg);
+            transform: translateX(-2px);
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: 1px solid var(--btn-border);
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 900px;
+            margin: 40px auto 35px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border: 1px solid var(--badge-border);
+        }
+
+        .hero-section h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--text-color);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-section p {
+            color: var(--muted-text);
+            font-size: 16px;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Large Faculty Grid Layout (6 Cards Layout - 3 per row on desktop) */
+        .faculty-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .faculty-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .card-img-box {
+            position: relative;
+            width: 100%;
+            height: 360px; /* Bada photo size */
+            background: #e2e8f0;
+            overflow: hidden;
+        }
+
+        .card-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.4s ease;
+        }
+
+        .faculty-card:hover .card-img-box img {
+            transform: scale(1.04);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: var(--exp-badge-bg);
+            backdrop-filter: blur(4px);
+            color: var(--exp-badge-text);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+
+        .card-content .degree {
+            font-size: 14px;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .subject-tag {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            align-self: flex-start;
+            border: 1px solid var(--badge-border);
+        }
+
+        .card-content .bio {
+            font-size: 14px;
+            color: var(--muted-text);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* Professional Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Professional Top Navigation Bar -->
+    <nav class="top-navbar">
+        <a href="index.html" class="back-btn">&larr; Back to Home</a>
+        <button id="themeToggleBtn" class="theme-toggle-btn">🌙 Dark Mode</button>
+    </nav>
+
+    <!-- Professional Hero Section -->
+    <section class="hero-section">
+        <div class="hero-badge">🎓 Maa Science Classes • Mashrak</div>
+        <h1>Meet Our Expert Teachers</h1>
+        <p>Learn directly from highly qualified educators dedicated to driving academic excellence and deep concept clarity.</p>
+    </section>
+
+    <!-- Faculty Cards Grid (6 Large Cards Setup) -->
+    <div class="faculty-wrapper">
+        <!-- Faculty 1 -->
+        <div class="faculty-card">
+            <div class="card-img-box">
+                <img src="teacher1.jpeg" alt="Sudhir Sir">
+                <div class="experience-badge">8+ Years Exp.</div>
+            </div>
+            <div class="card-content">
+                <h3>Sudhir Sir</h3>
+                <p class="degree">M.Sc. • B.Ed.</p>
+                <span class="subject-tag">Physics </span>
+                <p class="bio">Specialist in Class 11th & 12th Physics numerical problem-solving, derivations, and board exam strategies.</p>
+            </div>
+        </div>
+
+        <!-- Faculty 2 -->
+        <div class="faculty-card">
+            <div class="card-img-box">
+                <img src="teacher2.jpeg" alt="Piyush Sir">
+                <div class="experience-badge">7+ Years Exp.</div>
+            </div>
+            <div class="card-content">
+                <h3>Piyush Sir</h3>
+                <p class="degree">M.Sc. • B.Ed.</p>
+                <span class="subject-tag">Chemistry & Biology</span>
+                <p class="bio">Renowned for simplifying Organic Chemistry reactions and delivering thorough NCERT Biology concepts.</p>
+            </div>
+        </div>
+
+        <!-- Faculty 3 -->
+        <div class="faculty-card">
+            <div class="card-img-box">
+                <img src="teacher3.jpeg" alt="Suraj Sir">
+                <div class="experience-badge">8+ Years Exp.</div>
+            </div>
+            <div class="card-content">
+                <h3>Suraj Sir</h3>
+                <p class="degree">M.A. • B.Ed.</p>
+                <span class="subject-tag">Mathematics</span>
+                <p class="bio">Expert in Calculus, Algebra, and imparting smart shortcut techniques for competitive and board mathematics.</p>
+            </div>
+        </div>
+
+        <!-- Faculty 4 -->
+        <div class="faculty-card">
+            <div class="card-img-box">
+                <img src="teacher4.jpeg" alt="Pawan Sir">
+                <div class="experience-badge">6+ Years Exp.</div>
+            </div>
+            <div class="card-content">
+                <h3>Pawan Sir</h3>
+                <p class="degree">M.Sc. • B.Ed.</p>
+                <span class="subject-tag">English </span>
+                <p class="bio">Focused on rigorous English Grammar structuring, Literature scoring trends, and effective communication skills.</p>
+            </div>
+        </div>
+    </div>
+
+   <!-- Footer -->
+    <footer>
+        &copy; 2026 MAA SCIENCE CLASSES. Mashrak All Rights Reserved.
+    </footer>
+
+    <!-- JavaScript for Dark/Light Mode Toggle -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const bodyElement = document.body;
+
+        const savedTheme = localStorage.getItem('site-theme');
+        if (savedTheme) {
+            bodyElement.setAttribute('data-theme', savedTheme);
+            updateButtonText(savedTheme);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = bodyElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            bodyElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('site-theme', newTheme);
+            updateButtonText(newTheme);
+        });
+
+        function updateButtonText(theme) {
+            if (theme === 'dark') {
+                themeToggleBtn.innerHTML = '☀️ Light Mode';
+            } else {
+                themeToggleBtn.innerHTML = '🌙 Dark Mode';
+            }
+        }
+    </script>
+
+</body>
+</html>
