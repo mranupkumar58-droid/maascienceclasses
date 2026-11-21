@@ -803,9 +803,7 @@ footer {
         font-size: 11px;
     }
 }
-/* =================================
-   HERO SECTION ONLY ANIMATION
-================================= */
+/* HERO SECTION ONLY ANIMATION */
 
 @keyframes heroFadeUp {
     0% {
@@ -857,6 +855,11 @@ footer {
         transform: none;
     }
 }
+
+.counter {
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+}
     </style>
 </head>
 <body>
@@ -902,19 +905,19 @@ footer {
         <!-- Stats Bar -->
         <div class="stats-grid">
             <div class="stat-card">
-                <h2>500+</h2>
+                <h2 class="counter" data-target="500" data-suffix="+">0+</h2>
                 <p>Students Trained</p>
             </div>
             <div class="stat-card">
-                <h2>95%+</h2>
+                 <h2 class="counter" data-target="95" data-suffix="%+">0%+</h2>
                 <p>Board Success Rate</p>
             </div>
             <div class="stat-card">
-                <h2>8+ Yrs</h2>
+                 <h2 class="counter" data-target="8" data-suffix="+ yrs">0+ yrs</h2>
                 <p>Excellence Experience</p>
             </div>
             <div class="stat-card">
-                <h2>100%</h2>
+                 <h2 class="counter" data-target="100" data-suffix="%">0%</h2>
                 <p>NCERT Focused</p>
             </div>
         </div>
@@ -1056,5 +1059,57 @@ footer {
     
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".counter");
+  const duration = 2000; // 2 seconds taaki counting aaram se aur smooth dikhe
+
+  // Soft ease-out curve (shuru mein itna aggressive jump nahi karega)
+  const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+  const animateCounter = (el) => {
+    const target = parseInt(el.getAttribute("data-target"), 10);
+    const suffix = el.getAttribute("data-suffix") || "";
+    const startTime = performance.now();
+    let lastDisplayed = -1;
+
+    const updateCount = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Chhote numbers (jaise 8) par bhi steady progress ke liye round use karein
+      const currentValue =
+        progress < 1
+          ? Math.round(easeOutQuart(progress) * target)
+          : target;
+
+      if (currentValue !== lastDisplayed) {
+        el.textContent = `${currentValue}${suffix}`;
+        lastDisplayed = currentValue;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.25 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+});
+</script>
 </body>
 </html>
