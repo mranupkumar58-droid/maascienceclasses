@@ -974,6 +974,106 @@ html, body {
         transform: none;
     }
 }
+<!--footer-->
+  .simple-footer {
+    background-color: #0b1020;
+    color: #e2e8f0;
+    padding: 24px 20px 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .simple-footer-top {
+    max-width: 1120px;
+    margin: 0 auto 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .simple-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .simple-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+  }
+
+  .simple-brand h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .simple-brand p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .simple-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .simple-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 13.5px;
+  }
+
+  .simple-links a:hover {
+    color: #60a5fa;
+  }
+
+  .simple-contact {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #cbd5e1;
+  }
+
+  .simple-contact a {
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .simple-contact a:hover {
+    color: #60a5fa;
+  }
+
+  .simple-footer-bottom {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-top: 12px;
+    padding-right: 54px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  @media (max-width: 768px) {
+    .simple-footer-top,
+    .simple-footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-right: 0;
+    }
+  }
     </style>
 </head>
 <body>
@@ -1208,9 +1308,35 @@ html, body {
 </section>
 
  <!-- Footer -->
-    <footer>
-        &copy; 2026 MAA SCIENCE CLASSES. Mashrak All Rights Reserved.
-    </footer>
+    <footer class="simple-footer">
+  <div class="simple-footer-top">
+    <div class="simple-brand">
+      <img src="logo.jpeg" alt="Maa Science Classes" class="simple-logo" />
+      <div>
+        <h3>MAA SCIENCE CLASSES</h3>
+        <p>Mashrak, Saran, Bihar</p>
+      </div>
+    </div>
+
+    <div class="simple-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="result.html">Test Result</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="simple-contact">
+      <span>•</span>
+      <span>Mashrak, Bihar</span>
+    </div>
+  </div>
+
+  <div class="simple-footer-bottom">
+    <span>© 2026 MAA SCIENCE CLASSES. All Rights Reserved.</span>
+    <span>Designed by Anup Kumar</span>
+  </div>
+</footer>
 
     <!--======================js code=====================-->
 
